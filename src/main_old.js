@@ -1,4 +1,5 @@
 import Todolist from "./components/TodoList/TodoList";
+import "./styles.css";
 
 new Todolist({
   elt: "#app",
