@@ -1,15 +1,12 @@
-import "./styles.css";
-import getTodoTemplate from "./template";
-
+import getTemplate from "./template";
 export default class Todo {
   constructor(data) {
     this.id = data.id;
     this.content = data.content;
     this.completed = data.completed;
-    this.createdAt = data.createdAt;
-    this.render();
+    this.created_at = data.created_at;
   }
   render() {
-    return getTodoTemplate(this);
+    return getTemplate(this);
   }
 }
