@@ -1,12 +1,15 @@
 import "./styles.css";
-export default function getTodoListTemplate(todolist) {
-  return `<section class="todoapp">
+
+export default function (todoList) {
+  return `
+    <section class="todoapp">
       <header class="header">
         <h1>todos</h1>
         <input
           class="new-todo"
           placeholder="What needs to be done?"
           autofocus
+          onchange="window.todoList.addTodo(this)"
         />
       </header>
       <main class="main">
@@ -16,12 +19,15 @@ export default function getTodoListTemplate(todolist) {
             >Mark all as complete</label
           >
         </div>
-        <ul class="todo-list">
-        ${todolist.todos.map((todo) => todo.render()).join(" ")}
+        <ul class="todo-list" role="todo-list">
+          ${todoList.todos.map((todo) => todo.render()).join("")}
         </ul>
+
       </main>
       <footer class="footer">
-        <span class="todo-count"> ${todolist.getItemLeftCount()} item(s) left</span>
+        <span class="todo-count" role="todo-count">
+        <span>${todoList.getItemsLeftCount()}</span>  item(s) left
+        </span>
         <ul class="filters">
           <li><a href="#/" class="selected">All</a></li>
           <li><a href="#/active">Active</a></li>
@@ -35,5 +41,5 @@ export default function getTodoListTemplate(todolist) {
       <p>Created by the TodoMVC Team</p>
       <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
-`;
+  `;
 }
